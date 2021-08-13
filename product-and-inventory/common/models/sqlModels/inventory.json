@@ -1,0 +1,56 @@
+{
+  "name": "inventory",
+  "plural": "inventories",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "quantity": {
+      "type": "number",
+      "required": true
+    },
+    "batchNumber": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "batch_number",
+        "default": "NA"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "products": {
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": "fk_id_product"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "Seller",
+      "permission": "ALLOW",
+      "property": [
+        "find",
+        "updateInventory",
+        "create"
+      ]
+    }
+  ],
+  "methods": {}
+}

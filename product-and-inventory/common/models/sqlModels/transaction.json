@@ -1,0 +1,84 @@
+{
+  "name": "transaction",
+  "plural": "transactions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    },
+    "quantity": {
+      "type": "number",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "mysql": {
+        "columnName": "order_date"
+      }
+    },
+    "amount": {
+      "type": "number",
+      "required": true
+    },
+    "fkIdProduct": {
+      "type": "number",
+      "required": true,
+      "mysql":{
+        "columnName":"fk_id_product"
+      }
+    },
+    "fkIdUser": {
+      "type": "number",
+      "required": true,
+      "mysql":{
+        "columnName":"fk_id_user"
+      }
+    },
+    "status": {
+      "type": "string",
+      "mysql": {
+        "columnName": "status",
+        "dataType": "ENUM('accepted','rejected','pending')",
+        "default": "pending"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "product": {
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": "fkIdProduct"
+    },
+    "appUser": {
+      "type": "belongsTo",
+      "model": "appUser",
+      "foreignKey": "fkIdUser"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": [
+        "find",
+        "create"
+      ]
+    }
+  ],
+  "methods": {}
+}

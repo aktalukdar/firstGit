@@ -1,0 +1,99 @@
+{
+  "name": "appUser",
+  "plural": "appUsers",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mysql": {
+    "tableName": "user"
+  },
+  "mixins": {
+    "Encryption": {
+      "fields": [
+        "password"
+      ],
+      "password": "password",
+      "salt": "jkncjahksdjahsdkjhasjdhasdhkjasna",
+      "iteration": 100,
+      "hashBytes": 16,
+      "hashAlgorithm": "sha1",
+      "hexIv": "cd5c632d26fde5e2eb61e521ad2b91ba",
+      "encryptionAlgorithm": "aes-128-cbc"
+    }
+  },
+  "hidden": [
+    "password"
+  ],
+  "properties": {
+    "fullName": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "name"
+      }
+    },
+    "mobileNumber": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "mobile_number"
+      }
+    },
+    "emailAddress": {
+      "type": "string",
+      "mysql": {
+        "columnName": "email_address"
+      }
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "mysql": {
+        "columnName": "date_of_birth"
+      }
+    },
+    "password": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "password"
+      }
+    },
+    "id": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "transactions": {
+      "type": "hasMany",
+      "model": "transaction",
+      "foreignKey": "fkIdUser"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "Admin",
+      "permission": "ALLOW",
+      "property": [
+        "find",
+        "create",
+        "edit",
+        "deleteById",
+        "mapUserRole"
+      ]
+    }
+  ],
+  "methods": {}
+}

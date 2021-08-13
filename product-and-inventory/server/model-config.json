@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models/esModel",
+      "../common/models/sqlModels",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins",
+      "../node_modules/loopback-encryption-mixin"
+    ]
+  },
+  "appUser": {
+    "dataSource": "my_db",
+    "public": true
+  },
+  "appRole": {
+    "dataSource": "my_db",
+    "public": true
+  },
+  "userRoleMapping": {
+    "dataSource": "my_db",
+    "public": false
+  },
+  "inventory": {
+    "dataSource": "my_db",
+    "public": true
+  },
+  "product": {
+    "dataSource": "my_db",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "inMemoryDb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "inMemoryDb",
+    "public": false
+  },
+  "transaction": {
+    "dataSource": "my_db",
+    "public": true
+  },
+  "TransactionsReporting": {
+    "dataSource": "esReporting",
+    "public": true
+  }
+}

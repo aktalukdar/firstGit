@@ -1,0 +1,32 @@
+{
+  "name": "userRoleMapping",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mysql": {
+    "tableName": "user_role_mapping"
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "appUsers": {
+      "type": "belongsTo",
+      "model": "appUser",
+      "foreignKey": "fk_id_user"
+    },
+    "appRole": {
+      "type": "belongsTo",
+      "model": "appRole",
+      "foreignKey": "fk_id_role"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

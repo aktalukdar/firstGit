@@ -1,0 +1,84 @@
+{
+  "name": "TransactionsReporting",
+  "plural": "TransactionsReportings",
+  "base": "PersistedModel",
+  "elasticsearch": {
+    "index": "transactionsreporting",
+    "type": "transaction"
+  },
+  "properties": {
+    "customerName": {
+      "type": "string",
+      "required": false,
+      "es": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    },
+    "productName": {
+      "type": "string",
+      "required": false,
+      "es": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    },
+    "transactionId": {
+      "type": "Number",
+      "required": false,
+      "es": {
+        "type": "long"
+      }
+    },
+    "customerId": {
+      "type": "Number",
+      "required": true,
+      "es": {
+        "type": "long"
+      }
+    },
+    "productId": {
+      "type": "Number",
+      "required": true,
+      "es": {
+        "type": "long"
+      }
+    },
+    "transactionDate": {
+      "type": "Date",
+      "required": false,
+      "es": {
+        "type": "date"
+      }
+    },
+    "quantity": {
+      "type": "Number",
+      "required": false,
+      "es": {
+        "type": "double"
+      }
+    },
+    "totalAmount": {
+      "type": "Number",
+      "required": false,
+      "es": {
+        "type": "double"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+  ],
+  "methods": {}
+}

@@ -1,0 +1,34 @@
+{
+  "inMemoryDb": {
+    "name": "inMemoryDb",
+    "localStorage": "basicApp",
+    "file": "",
+    "connector": "memory"
+  },
+  "my_db": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "url": "",
+    "database": "my_db",
+    "password": "Rippon@123",
+    "name": "my_db",
+    "user": "root",
+    "connector": "mysql"
+  },
+  "esReporting": {
+    "name": "esReporting",
+    "hosts": [
+      {
+        "protocol": "http",
+        "host": "127.0.0.1",
+        "port": 9201
+      }
+    ],
+    "refreshOn": [
+      "*"
+    ],
+    "apiVersion": "5.x",
+    "connector": "es",
+    "requestTimeout": 300000
+  }
+}
